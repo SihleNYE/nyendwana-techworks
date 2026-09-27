@@ -34,3 +34,6 @@
 
 /* WhatsApp contact action */
 .whatsapp-button{display:inline-flex;align-items:center;gap:10px;margin:24px 0 0;padding:14px 18px;background:#25D366;color:#092D19;font-size:15px;font-weight:800;box-shadow:4px 4px 0 rgba(0,0,0,.18)}.whatsapp-button span{font-size:20px;line-height:0}.whatsapp-button b{margin-left:6px}.whatsapp-note{margin:11px 0 0!important;color:#DDE5F0!important;font-size:12px!important;line-height:1.4!important}
+
+/* Client-feedback section: testimonials remain permission-led and genuine. */
+.testimonials{background:var(--paper)}.testimonial-grid{display:grid;grid-template-columns:1fr .82fr;gap:100px;align-items:center}.feedback-card{background:var(--deep);color:#fff;padding:38px;box-shadow:9px 9px 0 var(--gold)}.feedback-kicker{margin:0 0 36px;color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.6px}.feedback-card h3{font-size:33px;line-height:1.03;letter-spacing:-1.6px;margin:0}.feedback-card>p:not(.feedback-kicker){margin:20px 0 29px;color:#DDE5F0;font-size:15px;line-height:1.6}.feedback-link{display:inline-block;border-bottom:2px solid var(--gold);padding-bottom:6px;color:#fff;font-size:14px;font-weight:800}.feedback-link span{color:var(--gold);padding-left:8px}@media(max-width:800px){.testimonial-grid{grid-template-columns:1fr;gap:35px}.feedback-card{padding:29px}.feedback-card h3{font-size:29px}}
