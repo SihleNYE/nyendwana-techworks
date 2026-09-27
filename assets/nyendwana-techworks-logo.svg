@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="700" viewBox="0 0 1800 700" role="img" aria-labelledby="title desc">
+  <title id="title">Nyendwana Techworks final logo</title>
+  <desc id="desc">An angular quartz inspired N monogram with three resilient human lines and a gold circuit orbit, followed by the Nyendwana Techworks wordmark.</desc>
+  <defs>
+    <style>
+      .word { font-family: Arial, Helvetica, sans-serif; }
+    </style>
+  </defs>
+  <!-- Icon: quartz-inspired N made from solid, scalable facets -->
+  <g transform="translate(92 105)">
+    <!-- navy outer facets -->
+    <path d="M0 430V44L104 0V286L254 114V0L358 44V430L254 474V188L104 360V474Z" fill="#102B5C"/>
+    <!-- lapis quartz faces -->
+    <path d="M104 0L254 114V188L104 74Z" fill="#1F4E8C"/>
+    <path d="M104 286L254 188V474L104 360Z" fill="#1F4E8C"/>
+    <path d="M0 44L104 74V360L0 430Z" fill="#163A74"/>
+    <path d="M358 44L254 74V360L358 430Z" fill="#0C2149"/>
+    <!-- Three enduring people / pillars in the N's clear centre -->
+    <g fill="#F3F0E8">
+      <rect x="141" y="226" width="15" height="83" rx="7.5"/>
+      <rect x="172" y="198" width="15" height="111" rx="7.5"/>
+      <rect x="203" y="226" width="15" height="83" rx="7.5"/>
+      <circle cx="148.5" cy="207" r="12"/>
+      <circle cx="179.5" cy="178" r="12"/>
+      <circle cx="210.5" cy="207" r="12"/>
+    </g>
+    <!-- One continuous circuit orbit -->
+    <path d="M-46 352C40 436 277 440 421 299C472 249 489 188 457 153" fill="none" stroke="#CFA14A" stroke-width="16" stroke-linecap="round"/>
+    <path d="M457 153h-38" fill="none" stroke="#CFA14A" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="468" cy="153" r="22" fill="#CFA14A"/>
+  </g>
+  <!-- Wordmark -->
+  <g class="word" fill="#102B5C" transform="translate(610 210)">
+    <text x="0" y="135" font-size="112" font-weight="800" letter-spacing="-2">NYENDWANA</text>
+    <text x="8" y="215" font-size="42" font-weight="700" letter-spacing="16" fill="#1F4E8C">TECHWORKS</text>
+    <rect x="8" y="250" width="610" height="8" rx="4" fill="#CFA14A"/>
+  </g>
+</svg>
