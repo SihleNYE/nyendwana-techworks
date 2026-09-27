@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sihlenye.github.io/nyendwana-techworks/sitemap.xml
