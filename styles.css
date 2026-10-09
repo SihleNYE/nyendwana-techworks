@@ -37,3 +37,16 @@
 
 /* Client-feedback section: testimonials remain permission-led and genuine. */
 .testimonials{background:var(--paper)}.testimonial-grid{display:grid;grid-template-columns:1fr .82fr;gap:100px;align-items:center}.feedback-card{background:var(--deep);color:#fff;padding:38px;box-shadow:9px 9px 0 var(--gold)}.feedback-kicker{margin:0 0 36px;color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.6px}.feedback-card h3{font-size:33px;line-height:1.03;letter-spacing:-1.6px;margin:0}.feedback-card>p:not(.feedback-kicker){margin:20px 0 29px;color:#DDE5F0;font-size:15px;line-height:1.6}.feedback-link{display:inline-block;border-bottom:2px solid var(--gold);padding-bottom:6px;color:#fff;font-size:14px;font-weight:800}.feedback-link span{color:var(--gold);padding-left:8px}@media(max-width:800px){.testimonial-grid{grid-template-columns:1fr;gap:35px}.feedback-card{padding:29px}.feedback-card h3{font-size:29px}}
+
+
+/* Ecommerce service and ORIGINS store demo */
+.ecommerce-card{background:#E8EDF3;color:var(--ink);border:1px solid var(--line)}
+.service-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.work-origins{background:#e9eee8;color:#19221e;border-color:#c5d0c6}
+.work-origins .work-type{color:#47624e}
+.work-origins .work-number{color:#63853a}
+.work-origins .work-brand{font-family:'Space Grotesk',sans-serif;letter-spacing:-2px;color:#19221e}
+.work-origins .work-link{border-color:#63853a}
+.work-origins .work-link b{color:#63853a}
+@media(max-width:1020px) and (min-width:801px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-card{min-height:320px}}
+@media(max-width:800px){.service-grid{grid-template-columns:1fr}}
