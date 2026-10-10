@@ -50,3 +50,4 @@
 .work-origins .work-link b{color:#63853a}
 @media(max-width:1020px) and (min-width:801px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-card{min-height:320px}}
 @media(max-width:800px){.service-grid{grid-template-columns:1fr}}
+.sounds-card{background:#261B3E;color:#F7F1FF;border:1px solid #4B356E}.sounds-card .service-icon{color:#F4A261}.sounds-card a{color:#F7F1FF}.sounds-card a b{color:#F4A261}.service-grid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:1020px) and (min-width:801px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:800px){.service-grid{grid-template-columns:1fr}}
