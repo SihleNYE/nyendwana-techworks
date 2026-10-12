@@ -1,3 +1,10 @@
+
+
+/* Larger, more prominent header logo */
+.brand img{width:310px;max-height:70px}
+.nav-wrap{height:92px}
+@media(max-width:800px){.nav-wrap{height:82px}.brand img{width:230px;max-height:62px}}
+@media(max-width:420px){.brand img{width:198px;max-height:56px}}
 /* Enquiry form: resilient two-column layout, with full-width actions */
 .contact form {
     align-items: start;
