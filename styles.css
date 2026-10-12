@@ -329,3 +329,18 @@
 .hero-format-list{display:flex;flex-wrap:wrap;gap:9px 0;max-width:610px;margin-top:47px;padding-top:18px;border-top:1px solid rgba(221,229,240,.28)}.hero-format-list span{width:50%;color:#dbe4f1;font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase}.hero-format-list span::first-letter{color:var(--gold)}.hero-reassurance{margin-top:16px;color:#b8c7dc;font-size:12px}
 .hero-showcase{align-self:stretch;position:relative;z-index:1;display:flex;flex-direction:column;min-height:427px;margin:0 0 0 auto;background:rgba(7,29,70,.49);border:1px solid rgba(221,229,240,.38);box-shadow:14px 14px 0 rgba(2,15,40,.23);backdrop-filter:blur(4px)}.showcase-top{display:flex;justify-content:space-between;gap:15px;padding:19px 21px;border-bottom:1px solid rgba(221,229,240,.23);font-size:10px;font-weight:800;letter-spacing:1.1px;color:#dce5f1}.showcase-top b{color:var(--gold);white-space:nowrap}.showcase-center{position:relative;display:flex;align-items:flex-end;justify-content:space-between;flex:1;padding:38px 25px 29px;background:linear-gradient(137deg,rgba(31,78,140,.55),rgba(5,27,66,.05))}.showcase-center p{margin:0;font:600 clamp(28px,3vw,43px)/.99 'Space Grotesk',sans-serif;letter-spacing:-2.2px;color:#fff}.showcase-center em{color:var(--gold)}.showcase-mark{display:grid;place-items:center;width:64px;height:64px;border:1px solid var(--gold);border-radius:50%;color:var(--gold);font:400 35px/1 'DM Sans',sans-serif;font-style:normal}.showcase-types{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(221,229,240,.23)}.showcase-types div{display:flex;gap:9px;padding:15px 17px;border-bottom:1px solid rgba(221,229,240,.18);color:#e3eaf5;font-size:10px;font-weight:800;letter-spacing:1px}.showcase-types div:nth-child(odd){border-right:1px solid rgba(221,229,240,.18)}.showcase-types div:nth-last-child(-n+2){border-bottom:0}.showcase-types b{color:var(--gold);font-weight:800}
 @media(max-width:800px){.hero{min-height:auto}.hero-grid{min-height:0;grid-template-columns:1fr;gap:42px;padding:72px 0 57px}.hero h1{font-size:clamp(45px,13vw,65px);letter-spacing:-3.7px}.hero-lead{font-size:17px;margin-top:24px}.hero-actions{align-items:flex-start;flex-direction:column;gap:18px;margin-top:29px}.hero-format-list{margin-top:38px}.hero-format-list span{font-size:11px}.hero-showcase{width:100%;min-height:340px}.showcase-center{padding:32px 21px 26px}.showcase-center p{font-size:36px}.orbit-one{width:600px;height:600px;right:-390px;top:-155px}.orbit-two{display:none}}
+
+
+/* Mobile navigation: final cascade override */
+@media (max-width:800px){
+ .nav-wrap{position:relative;height:76px;gap:12px}
+ .brand{min-width:0}
+ .brand img{width:min(54vw,210px);max-height:58px}
+ .menu-toggle{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:76px;min-height:44px}
+ .nav{display:none;position:absolute;z-index:30;top:100%;right:0;left:0;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 18px;background:var(--deep);border-top:1px solid rgba(221,229,240,.18);box-shadow:0 16px 28px rgba(4,17,43,.32)}
+ .nav.open{display:flex}
+ .nav>a:not(.nav-cta){padding:16px 0;border-bottom:1px solid rgba(221,229,240,.15);font-size:16px}
+ .nav-cta{margin-top:16px;padding:15px 18px}
+ .nav-cta span{margin-left:auto}
+}
+@media(max-width:420px){.nav-wrap{height:70px}.brand img{width:min(52vw,185px);max-height:52px}.menu-toggle{min-width:68px;padding:10px}}
