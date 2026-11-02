@@ -1,0 +1,57 @@
+div class="stage"><svg viewBox="0 0 300 95" role="img" aria-label="Your demo contribution as a share of the selected campaign goal"><circle cx="48" cy="47" r="33" fill="#EAF2D9" stroke="#D9DECD" stroke-width="8"/><circle id="donorRing" cx="48" cy="47" r="33" fill="none" stroke="#12382D" stroke-width="8" stroke-linecap="round" stroke-dasharray="207.35" stroke-dashoffset="207.35" transform="rotate(-90 48 47)"/><text id="donorPercent" x="48" y="53" text-anchor="middle" font-size="16" font-weight="800" fill="#12382D">0%</text><text x="100" y="29" font-size="11" fill="#4C6255">Your demo contribution</text><text id="donorContribution" x="100" y="53" font-size="19" font-weight="800" fill="#12382D">R0</text><text id="donorGoal" x="100" y="73" font-size="11" fill="#4C6255">of a R0 goal</text></svg></div><p id="donorNote"></p><div class="toolbar"><button class="secondary" id="donorDetails">View campaign</button><button id="donorAgain">Give again</button></div><strong>Demo donation history</strong><div id="donorHistory" aria-live="polite"></div><div class="topline"><small id="donorPager"></small><button class="ghost" id="donorNext">Next page</button></div></div><button id="donorDiscover">Find a hustle</button><p class="caption">Session-only demo history, not receipts or tax certificates. No real payments, rewards, equity or financial returns. Sample organisers are fictional and not verified.</p></section>
+</main><footer class="portfolio-footer">Built by <a href="../../">Nyendwana Techworks</a> · <a href="../../#contact">Enquire about a custom web app</a></footer><script>
+const campaigns=[{title:'A bigger pot, a bigger hustle',category:'Food',story:'Help a home cook buy a gas stove and pots to serve more lunchtime customers.',goal:5000,raised:1750},{title:'Fresh cuts, fresh start',category:'Services',story:'Help a barber buy professional clippers, a mirror and a chair for a neighbourhood barber corner.',goal:8000,raised:3200},{title:'Stitching a way forward',category:'Services',story:'Support a sewing hustle with an overlocker and fabric for its first batch of custom clothing.',goal:6500,raised:2275}];
+let current=0,filter='All';const $=id=>document.getElementById(id);const money=n=>'R'+Number(n).toLocaleString('en-ZA',{maximumFractionDigits:0});
+function visible(){return campaigns.map((c,i)=>({c,i})).filter(x=>filter==='All'||x.c.category===filter)}
+function screen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id))}
+function render(){const c=campaigns[current],list=visible();$('campaignTitle').textContent=c.title;$('category').textContent=c.category;$('story').textContent=c.story;$('owner').textContent=c.own?'Your demo campaign':'Example campaign';$('raised').textContent=money(c.raised);$('goal').textContent=money(c.goal);const percentage=Math.min(100,c.raised/c.goal*100);$('fill').style.width=percentage+'%';$('meter').setAttribute('aria-valuenow',String(Math.round(percentage)));$('count').textContent=(list.findIndex(x=>x.i===current)+1)+' of '+list.length;$('next').disabled=list.length<2}
+function selectFilter(value){filter=value;document.querySelectorAll('[data-filter]').forEach(b=>{const active=b.dataset.filter===value;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active))})}
+document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{selectFilter(b.dataset.filter);current=visible()[0].i;render()});
+$('next').onclick=()=>{const list=visible(),pos=list.findIndex(x=>x.i===current);current=list[(pos+1)%list.length].i;render()};
+$('donate').onclick=()=>{$('donationTitle').textContent=campaigns[current].title;$('donationFeedback').textContent='';$('confirm').disabled=false;screen('donation')};
+$('amount').oninput=()=>{$('amountDisplay').textContent=money($('amount').value)};
+$('confirm').onclick=()=>{const n=Number($('amount').value);campaigns[current].raised+=n;render();$('donationFeedback').textContent=money(n)+' demo donation added. No money charged.';$('confirm').disabled=true};
+document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>screen('explore'));
+$('start').onclick=()=>{$('createFeedback').textContent='';screen('create')};
+$('preview').onclick=()=>{const title=$('newTitle').value.trim(),story=$('newStory').value.trim(),goal=Number($('newGoal').value);if(!title||!story||!Number.isInteger(goal)||goal<100||goal>1000000){$('createFeedback').textContent='Add a campaign name, a short story and a whole-rand goal from R100 to R1,000,000.';return}campaigns.push({title,story,goal,raised:0,category:$('newCategory').value,own:true});current=campaigns.length-1;selectFilter('All');render();screen('explore')};
+
+// Detail information is illustrative; no sample organiser is a verified person.
+const sampleDetails=[
+{organizer:'Example home cook',about:'The next step is a dedicated cooking setup that can handle more lunchtime orders. Donations would fund the equipment and first cooking supplies.',budget:[['Gas stove',3000],['Large pots',1500],['Cooking supplies',500]]},
+{organizer:'Example barber',about:'A small neighbourhood barber corner needs its first reliable set of equipment. Donations would cover the tools and basic setup needed to welcome customers.',budget:[['Clippers and tools',3500],['Barber chair',3000],['Mirror and setup',1500]]},
+{organizer:'Example sewist',about:'An overlocker would help this sewing hustle finish garments neatly and take on more work. Donations would also cover fabric and basic sewing supplies.',budget:[['Overlocker',4500],['Fabric',1500],['Sewing supplies',500]]}
+];
+let detailTab='Story',donationReturn='explore';
+function paragraph(text){const el=document.createElement('p');el.textContent=text;return el}
+function renderDetails(){
+ const c=campaigns[current],d=sampleDetails[current],budget=c.budget||(d?d.budget:null),ratio=c.raised/c.goal,percent=Math.min(100,ratio*100),end=20+260*percent/100;
+ $('detailsTitle').textContent=c.title;$('detailsCategory').textContent=c.category+' · '+(c.own?'Your demo campaign':'Sample campaign');
+ $('detailsOrganizer').textContent=c.own?'Organiser: not provided · Not verified':'Organiser: '+d.organizer+' · Fictional example';
+ $('detailsRaised').textContent=money(c.raised);$('detailsGoal').textContent=money(c.goal);$('detailsPercent').textContent=Math.round(ratio*100)+'% funded';
+ $('detailsRemaining').textContent=c.raised>=c.goal?'Demo goal reached':money(c.goal-c.raised)+' still needed';
+ $('fundingLine').setAttribute('d','M20 48H'+end);$('fundingDot').setAttribute('cx',String(end));
+ document.querySelectorAll('[data-detail-tab]').forEach(b=>{const active=b.dataset.detailTab===detailTab;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active))});
+ $('editBudget').hidden=!(c.own&&detailTab==='Budget');const content=$('detailContent');content.replaceChildren();
+ if(detailTab==='Story'){content.append(paragraph(c.story));content.append(paragraph(d?d.about:'This is your campaign preview. Your description is shown as entered. Open the organiser profile to see who is behind the hustle.'))}
+ if(detailTab==='Budget'){
+  if(budget&&budget.length){content.append(paragraph((c.own?'Your spending plan':'Illustrative spending plan')+' · '+money(c.goal)+' total'));
+   budget.forEach(([label,value])=>{const row=document.createElement('div');row.className='budget-row';const heading=document.createElement('div');heading.className='budget-label';const name=document.createElement('span');name.textContent=label;const amount=document.createElement('strong');amount.textContent=money(value);heading.append(name,amount);const track=document.createElement('div');track.className='budget-track';const bar=document.createElement('span');bar.style.width=(value/c.goal*100)+'%';track.append(bar);row.append(heading,track);content.append(row)})
+  }else{content.append(paragraph('No itemised budget added yet.'));content.append(paragraph('Campaign goal: '+money(c.goal)+'. Your stated use of donations: '+c.story))}
+ }
+ if(detailTab==='Updates'){
+  const donations=c.sessionDonations||[];
+  if(donations.length){const total=donations.reduce((sum,n)=>sum+n,0);content.append(paragraph(donations.length+' demo donation'+(donations.length===1?'':'s')+' added this session · '+money(total)+' total.'));content.append(paragraph('Latest demo donation: '+money(donations[donations.length-1])+'.'))}
+  else{content.append(paragraph('No campaign updates yet.'));content.append(paragraph(c.own?'Your campaign exists in this session only.':'The starting funding total is illustrative sample data.'))}
+  content.append(paragraph('No real funds have been collected.'));
+ }
+}
+const baseRender=render;render=function(){baseRender();renderDetails()};
+$('viewDetails').onclick=()=>{detailTab='Story';renderDetails();screen('details')};
+document.querySelectorAll('[data-detail-tab]').forEach(b=>b.onclick=()=>{detailTab=b.dataset.detailTab;renderDetails()});
+function openDonation(from){donationReturn=from;$('donationTitle').textContent=campaigns[current].title;$('donationFeedback').textContent='';$('confirm').disabled=false;screen('donation')}
+$('donate').onclick=()=>openDonation('explore');$('detailsDonate').onclick=()=>openDonation('details');
+$('confirm').onclick=()=>{if($('confirm').disabled)return;const n=Number($('amount').value),c=campaigns[current];c.raised+=n;if(!c.sessionDonations)c.sessionDonations=[];c.sessionDonations.push(n);render();$('donationFeedback').textContent=money(n)+' demo donation added. No money charged.';$('confirm').disabled=true};
+document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>{const fromDonation=b.closest('#donation');if(fromDonation){renderDetails();screen(donationReturn)}else{screen('explore')}});
+let draftBudget=[],budgetWorking=[],budgetIndex=0,budgetTarget='draft',budgetCampaign=-1,budgetGoal=0;
+function budgetSum(items){return items.reduce((total,item)=>total+Number(item[1]||0),0)}
+function validBudget(items,goal){return items.length>0&&items.length<=10&&items.every(([name,
