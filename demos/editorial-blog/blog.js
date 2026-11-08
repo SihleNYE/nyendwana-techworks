@@ -25,7 +25,7 @@
       ['normal-hero-3','Home','A lamp, a chair, a better evening','The quiet impact of making one corner comfortable.','https://nyendwanatechworks.co.za/demos/editorial-blog/photos/normal-hero.webp','Sunlight filtering through a green forest']
     ] }
   };
-  if(location.hostname.endsWith('github.io')) Object.values(editions).forEach(e=>{const base='https://nyendwanatechworks.co.za/demos/editorial-blog/';e.hero.image=base+e.hero.image;e.stories.forEach(s=>s[4]=base+s[4]);});
+  if(location.hostname.endsWith('github.io')) Object.values(editions).forEach(e=>{const base='https://nyendwanatechworks.co.za/demos/editorial-blog/';e.hero.image=new URL(e.hero.image,base).href;e.stories.forEach(s=>s[4]=new URL(s[4],base).href);});
   const $ = s => document.querySelector(s), grid=$('#storyGrid'), dialog=$('#articleDialog');
   let mode='food', category='All', savedOnly=false, lastFocus=null, saved=new Set();
   try {
