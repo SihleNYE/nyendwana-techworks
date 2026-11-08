@@ -7,3 +7,11 @@ html[data-theme=gold]{color-scheme:light}html[data-theme=gold] body{color:#102b5
 .card .demo-pricing strong{color:#f0cd85;font-size:1.12rem;line-height:1.4}
 .card .demo-pricing span,.card .demo-pricing small{color:#e1e7f0;font-size:.8rem;line-height:1.5}
 .gallery-pricing-note{padding:16px 18px;margin:16px 0 24px;border-left:3px solid #cfa14a;background:rgba(16,43,92,.8);border-radius:8px;color:#e1e7f0;font-size:.9rem;line-height:1.7;max-width:100%}
+
+/* Keep each build price visibly beside its demo name. */
+.card .demo-title-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:16px 0 10px;min-width:0}
+.card .demo-title-row h2{margin:0;flex:1;min-width:0;font-size:20px;line-height:1.3}
+.card .title-price{display:inline-flex;flex-shrink:0;white-space:nowrap;padding:7px 9px;border:1px solid #cfa14a;border-radius:8px;background:#102b5c;color:#f0cd85;font-weight:800;font-size:13px;line-height:1.35}
+html[data-theme=gold] .card .title-price{background:#102b5c;color:#f0cd85}
+.card .demo-pricing strong{display:none}
+@media(max-width:560px){.card .demo-title-row h2{font-size:19px}.card .title-price{font-size:12px;padding:7px 8px}.card .demo-title-row{gap:8px}}
