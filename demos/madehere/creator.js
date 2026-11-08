@@ -1,0 +1,16 @@
+(() => {
+'use strict';
+const $ = selector => document.querySelector(selector);
+const follow = $('#follow-toggle'), save = $('#save-toggle'), status = $('#profile-status');
+function getFlag(key){try{return localStorage.getItem(key)==='true'}catch(e){return false}}
+function setFlag(key,value){try{localStorage.setItem(key,String(value));return true}catch(e){return false}}
+function updateButton(button,on,onText,offText){button.setAttribute('aria-pressed',String(on));button.textContent=on?onText:offText}
+let following=getFlag('madehere-garage31-follow'), saved=getFlag('madehere-garage31-save');
+updateButton(follow,following,'✓ Following profile','+ Follow profile');updateButton(save,saved,'♥ Saved profile','♡ Save profile');
+follow.addEventListener('click',()=>{following=!following;setFlag('madehere-garage31-follow',following);updateButton(follow,following,'✓ Following profile','+ Follow profile');status.textContent=following?'Profile followed locally in this browser.':'Profile follow removed locally in this browser.'});
+save.addEventListener('click',()=>{saved=!saved;setFlag('madehere-garage31-save',saved);updateButton(save,saved,'♥ Saved profile','♡ Save profile');status.textContent=saved?'Profile saved locally in this browser.':'Profile removed from local saves.'});
+const video=$('#prototype-video'),upload=$('#video-upload'),reset=$('#reset-video'),uploadMessage=$('#upload-message'),videoStatus=$('#video-status');let previewUrl='';
+function restoreSample(){if(previewUrl){URL.revokeObjectURL(previewUrl);previewUrl=''}video.pause();video.removeAttribute('src');video.innerHTML='<source src="prototype.mp4" type="video/mp4">Your browser does not support HTML5 video.';video.load();reset.hidden=true;upload.value='';uploadMessage.textContent='Nothing is uploaded, saved or published.';videoStatus.textContent='12-second concept animation. Press play to explore the design.';videoStatus.classList.remove('error')}
+upload.addEventListener('change',()=>{const file=upload.files&&upload.files[0];if(!file)return;const valid=['video/mp4','video/webm','video/quicktime'];if(!valid.includes(file.type)){uploadMessage.textContent='Choose an MP4, WebM or QuickTime video file.';upload.value='';return}if(file.size>80*1024*1024){uploadMessage.textContent='That video is over the 80 MB local-preview limit.';upload.value='';return}if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=URL.createObjectURL(file);video.pause();video.innerHTML='';video.src=previewUrl;video.load();reset.hidden=false;uploadMessage.textContent='Your local video preview. Not uploaded, saved or published.';videoStatus.textContent='Local preview loaded. It stays only in this browser session.';videoStatus.classList.remove('error')});
+reset.addEventListener('click',restoreSample);video.addEventListener('error',()=>{if(video.currentSrc.includes('prototype.mp4')){videoStatus.textContent='Sample concept animation is not available yet. You can still try a local video preview below.';videoStatus.classList.add('error')}else{videoStatus.textContent='This video could not be previewed. Try another supported file.';videoStatus.classList.add('error')}});window.addEventListener('beforeunload',()=>{if(previewUrl)URL.revokeObjectURL(previewUrl)});
+})();
