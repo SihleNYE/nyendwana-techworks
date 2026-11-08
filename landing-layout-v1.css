@@ -3,8 +3,8 @@
 .gold-divider{display:flex;align-items:center;justify-content:center;gap:17px;width:min(630px,85%);margin:0 auto 32px;height:12px;pointer-events:none}.gold-divider span{height:1px;flex:1;background:linear-gradient(90deg,transparent,#cfa14a88 55%,#f0d38b)}.gold-divider span:last-child{transform:scaleX(-1)}.gold-divider i{width:9px;height:9px;transform:rotate(45deg);border:1px solid #f0d38b;background:#cfa14a33}.site-header{border-bottom:1px solid #cfa14a33}footer{border-top:1px solid #cfa14a33;margin-top:24px}
 
 /* Gold African-inspired geometric background, kept behind all content. */
-.heritage-pattern{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("assets/gold-heritage-pattern.svg");background-size:240px 300px;background-position:center 105px;opacity:.12;mask-image:linear-gradient(90deg,#000 0%,#0008 22%,#0003 43%,#0003 57%,#0008 78%,#000 100%);-webkit-mask-image:linear-gradient(90deg,#000 0%,#0008 22%,#0003 43%,#0003 57%,#0008 78%,#000 100%)}
+.heritage-pattern{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("assets/gold-heritage-pattern.svg?v=bold-3");background-size:240px 300px;background-position:center 105px;opacity:.34;mask-image:linear-gradient(90deg,#000 0%,#0008 22%,#0006 43%,#0006 57%,#0008 78%,#000 100%);-webkit-mask-image:linear-gradient(90deg,#000 0%,#0008 22%,#0006 43%,#0006 57%,#0008 78%,#000 100%)}
 .site-header,main.wrap,footer.wrap{position:relative;z-index:1}
 .service-card{background:linear-gradient(145deg,#1b3565f5,#122a53ed)}
 .contact-bar{background:#0b2149f5}
-@media(max-width:720px){.heritage-pattern{background-size:185px 231px;opacity:.1;mask-image:linear-gradient(90deg,#000,#0004 45%,#0004 55%,#000);-webkit-mask-image:linear-gradient(90deg,#000,#0004 45%,#0004 55%,#000)}.gold-divider{margin-bottom:26px}}
+@media(max-width:720px){.heritage-pattern{background-size:185px 231px;opacity:.28;mask-image:linear-gradient(90deg,#000,#0007 45%,#0007 55%,#000);-webkit-mask-image:linear-gradient(90deg,#000,#0007 45%,#0007 55%,#000)}.gold-divider{margin-bottom:26px}}
